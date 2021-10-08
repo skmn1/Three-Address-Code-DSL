@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: fr.ensma.dsl.tac
+Bundle-ManifestVersion: 2
+Bundle-Name: fr.ensma.dsl.tac
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: fr.ensma.dsl.tac; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: fr.ensma.dsl.services,
+ fr.ensma.dsl.threeAddressCode.util,
+ fr.ensma.dsl.validation,
+ fr.ensma.dsl,
+ fr.ensma.dsl.scoping,
+ fr.ensma.dsl.serializer,
+ fr.ensma.dsl.threeAddressCode.impl,
+ fr.ensma.dsl.generator,
+ fr.ensma.dsl.threeAddressCode,
+ fr.ensma.dsl.parser.antlr.internal,
+ fr.ensma.dsl.parser.antlr
+Import-Package: org.apache.log4j

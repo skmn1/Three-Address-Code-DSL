@@ -1,0 +1,9 @@
+grammar fr.ensma.dsl.ThreeAddressCode with org.eclipse.xtext.common.Terminals
+
+generate threeAddressCode "http://www.ensma.fr/dsl/ThreeAddressCode"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

@@ -1,0 +1,26 @@
+grammar fr.ensma.dsl.ThreeAddressCode with org.eclipse.xtext.common.Terminals
+
+generate threeAddressCode "http://www.ensma.fr/dsl/ThreeAddressCode"
+
+
+Goto returns Goto:
+	{Goto}
+	'goto' 
+;
+
+
+Function returns Function:
+	{Function}
+	name=STRING|ID '(' ')' '{' '}'
+;
+
+FunctionParam returns FunctionParam:
+	{FunctionParam}
+	'struct'? datatype=DataType '*'? name=STRING|ID
+	
+;
+
+DataType returns DataType:
+	{DataType}
+	'float'|'int'
+;

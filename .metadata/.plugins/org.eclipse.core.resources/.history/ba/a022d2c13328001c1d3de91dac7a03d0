@@ -1,0 +1,56 @@
+grammar fr.ensma.dsl.ThreeAddressCode with org.eclipse.xtext.common.Terminals
+
+generate threeAddressCode "http://www.ensma.fr/dsl/ThreeAddressCode"
+
+//Model:
+//	greetings+=Greeting*;
+//	
+//Greeting:
+//	'Hello' name=ID '!';
+//	
+//Goto returns Goto:
+//	{Goto}
+//	'goto' 
+//;
+
+TAC  returns TAC:
+	tac += Function*
+;
+
+Function returns Function:
+	{Function}
+	name=ID '(' (functionparam=FunctionParam','?)* ')' '{'
+		content=STRING
+		goto=Goto*
+		
+	 '}'
+;
+
+FunctionParam returns FunctionParam:
+	{FunctionParam}
+	('struct' ID '*' ID',')? datatype=DataType '*'? name=ID
+	
+;
+
+DataType returns DataType:
+	{DataType}
+	'float'|'int'
+;
+
+
+Goto returns Goto:
+	{Goto}
+	'goto' ID 
+;
+
+If returns If:
+	'if' '(' BooleanExpression ')';
+
+BooleanExpression returns BouleanExrpession:
+	ID LogicalOperation INT|ID;
+
+ArithmeticOperation returns ArithmeticOperation:
+	'+' | '-' | '*' | '/' ;
+
+LogicalOperation returns LogicalOperation:
+	'and' | 'or' | '=<' | '<' | '>' | '=>' | '==' | '!=';

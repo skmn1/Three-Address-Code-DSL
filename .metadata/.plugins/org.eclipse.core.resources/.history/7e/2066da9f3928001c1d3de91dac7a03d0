@@ -1,0 +1,69 @@
+grammar fr.ensma.dsl.ThreeAddressCode with org.eclipse.xtext.common.Terminals
+
+generate threeAddressCode "http://www.ensma.fr/dsl/ThreeAddressCode"
+
+//Model:
+//	greetings+=Greeting*;
+//	
+//Greeting:
+//	'Hello' name=ID '!';
+//	
+//Goto returns Goto:
+//	{Goto}
+//	'goto' 
+//;
+
+TAC  returns TAC:
+	tac += FunctionDef* fc+=FunctionCall*
+;
+
+FunctionDef returns FunctionDef:
+	{FunctionDef}
+	function+=Function '(' (functionparam+=FunctionParam','?)* ')' '{'
+		content=STRING
+		goto+=Goto*
+		if+=If*
+		'#' 'DEBUG' 'BEGIN_STMT'*
+		functionCall+=FunctionCall*
+		
+	 '}'
+;
+
+FunctionCall returns FunctionCall:
+	{FunctionCall}
+	functionCall+=[Function] '(' (functionparam+=FunctionParam','?)* ')' ';'
+;
+
+FunctionParam returns FunctionParam:
+	{FunctionParam}
+	('struct' ID '*' ID',')? datatype=DataType '*'? name=ID
+	
+;
+
+DataType returns DataType:
+	{DataType}
+	'float'|{DataType} 'int'
+;
+
+
+Goto returns Goto:
+	{Goto}
+	'goto' ID ';'
+;
+
+If returns If:
+	'if' '(' BooleanExpression ')'
+	;
+	
+Function returns Function:
+	{Function}
+	name=ID;
+
+BooleanExpression returns BouleanExrpession:
+	ID LogicalOperation INT| ID;
+
+ArithmeticOperation returns ArithmeticOperation:
+	'+' | '-' | '*' | '/' ;
+
+LogicalOperation returns LogicalOperation:
+	'and' | 'or' | '=<' | '<' | '>' | '=>' | '==' | '!=';

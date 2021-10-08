@@ -1,0 +1,9 @@
+grammar fr.ensma.dsl.TAC with org.eclipse.xtext.common.Terminals
+
+generate tAC "http://www.ensma.fr/dsl/TAC"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="threeAddressCode" nsURI="http://www.ensma.fr/dsl/ThreeAddressCode"
+    nsPrefix="threeAddressCode">
+  <eClassifiers xsi:type="ecore:EClass" name="TAC">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tac" upperBound="-1" eType="#//FunctionDef"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionDef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" upperBound="-1"
+        eType="#//Function" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionparam" upperBound="-1"
+        eType="#//FunctionParam" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="struct" upperBound="-1"
+        eType="#//Struct" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="label" upperBound="-1"
+        eType="#//Label" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goto" upperBound="-1" eType="#//Goto"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="if" upperBound="-1" eType="#//If"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionCall" upperBound="-1"
+        eType="#//FunctionCall" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignOp" upperBound="-1"
+        eType="#//AssignOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionCall">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionCall" unique="false"
+        upperBound="-1" eType="#//Function"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionArgument" upperBound="-1"
+        eType="#//FunctionArgument" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionParam">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="struct" upperBound="-1"
+        eType="#//Struct" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datatype" eType="#//DataType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionArgument"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Struct"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Goto"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Label"/>
+  <eClassifiers xsi:type="ecore:EClass" name="If"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AssignOperation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionCall" upperBound="-1"
+        eType="#//FunctionCall" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Function">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BouleanExrpession" eSuperTypes="#//If"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArithmeticOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LogicalOperation" eSuperTypes="#//BouleanExrpession"/>
+</ecore:EPackage>
